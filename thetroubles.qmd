@@ -1,0 +1,159 @@
+---
+title: "The Troubles"
+format: html
+editor: visual
+---
+
+# The Troubles - A Time Series Analysis (1969-2005) 
+
+## Analyse descriptive
+
+### 1. Visualisation de la série
+
+```{r}
+#| include: false
+download.file(
+  "https://dataverse.harvard.edu/api/access/datafile/7660059",
+  destfile = "ni_fatalities.tab",
+  mode = "wb"
+)
+```
+
+```{r}
+data <- read.delim("ni_fatalities.tab")
+
+str(data)
+summary(data)
+head(data)
+```
+
+```{r}
+data$date <- as.Date(data$date)
+
+data <- data[!is.na(data$date), ]
+
+dim(data)
+range(data$date)
+sum(is.na(data$date))
+```
+
+On commence par importer les données. Le fichier contient 3696 observations et 138 variables.
+
+La variable essentielle ici est `date`, qui est initialement lue comme caractère. Une série temporelle repose entièrement sur l’ordre chronologique, donc la première étape conceptuelle consiste à convertir cette variable en objet de type Date (`as.Date`).
+
+Après conversion, les observations sans date valide sont supprimées. Cette étape est indispensable : une date manquante empêche l’assignation à une période mensuelle, donc l’observation ne peut pas être intégrée dans la série.
+
+On vérifie ensuite l’étendue temporelle avec `range(data$date)`. Les données valides couvrent juillet 1969 à mars 2005. Cela définit naturellement le domaine de la série.
+
+```{r}
+library(lubridate)
+library(dplyr)
+
+monthly_raw <- data %>%
+  mutate(
+    year  = year(date),
+    month = month(date)
+  ) %>%
+  group_by(year, month) %>%
+  summarise(total = n(), .groups = "drop")
+```
+
+Les données initiales sont individuelles (un décès par ligne). On choisit l’échelle mensuelle, à l’échelle journalière la série serait trop bruitée et très irrégulière et à l’échelle annuelle on perdrait trop d’information (36 observations). Le mois est donc un compromis pertinent pour observer la dynamique du conflit.
+
+On extrait l’année et le mois avec les fonctions `year()` et `month()` du package lubridate. Mathématiquement, on définit une fonction d’agrégation qui associe à chaque couple (année, mois) le nombre d’événements observés. Cette agrégation est réalisée via `group_by(year, month)` puis `summarise(total = n())`. On obtient ainsi une série brute de comptages mensuels.
+
+```{r}
+start_month <- floor_date(min(data$date), "month")
+end_month   <- floor_date(max(data$date), "month")
+
+full_months <- data.frame(
+  date = seq(start_month, end_month, by = "month")
+)
+
+full_months$year  <- year(full_months$date)
+full_months$month <- month(full_months$date)
+```
+
+Certains mois peuvent n’avoir aucun décès. Si on se contente d’agréger les mois présents dans les données, les mois sans observation disparaissent. Cela fausserait la structure temporelle. On construit donc explicitement une séquence complète de mois entre la première et la dernière date avec `seq(start_month, end_month, by = "month")`. Cette étape garantit la régularité de la grille temporelle.
+
+```{r}
+monthly_counts <- full_months %>%
+  left_join(monthly_raw, by = c("year", "month"))
+
+monthly_counts$total[is.na(monthly_counts$total)] <- 0
+
+nrow(monthly_counts)
+sum(is.na(monthly_counts$total))
+```
+
+On joint ensuite cette grille complète avec les comptages réels (`left_join`). Les mois sans décès apparaissent alors avec des valeurs manquantes, remplacées par zéro. On obtient 429 mois consécutifs.
+
+```{r}
+ts_deaths <- ts(
+  monthly_counts$total,
+  start = c(1969, 7),
+  frequency = 12
+)
+
+start(ts_deaths)
+end(ts_deaths)
+frequency(ts_deaths)
+```
+
+On transforme ensuite la série numérique en objet `ts` avec `frequency = 12`. Le paramètre `start = c(1969, 7)` indique que la première observation correspond à juillet 1969. Le paramètre `frequency = 12` signifie que la série comporte 12 observations par an. Cette information est essentielle pour que les fonctions d’autocorrélation et de modélisation comprennent la structure périodique.
+
+```{r}
+summary(ts_deaths)
+mean(ts_deaths)
+var(ts_deaths)
+```
+
+```{r}
+plot(ts_deaths,
+     main = "Nombre mensuel de décès (1969–2005)",
+     ylab = "Nombre de décès",
+     xlab = "Temps")
+```
+
+On commence par une analyse descriptive simple. La moyenne mensuelle est d’environ 8,26 décès. La variance est de 116,7, nettement supérieure à la moyenne. Cela indique une forte dispersion et la présence probable de périodes de forte intensité. Le graphique confirme visuellement un pic important au début des années 1970, suivi d’une décroissance progressive avec une grande variance. Cela suggère une dynamique non constante dans le temps.
+
+```{r}
+acf(ts_deaths, lag.max = 36)
+```
+
+On examine ensuite la fonction d’autocorrélation (`acf`). Mathématiquement, l’autocorrélation au lag k mesure la corrélation entre la série et elle-même décalée de k périodes. Si les barres sont significativement (au dessus de la barre bleue) positives sur plusieurs retards, cela signifie que les valeurs proches dans le temps sont liées. Ici, l’ACF décroît lentement, ce qui indique une forte dépendance temporelle. Les niveaux élevés tendent à être suivis de niveaux élevés. Ce comportement est typique d’un processus autorégressif.
+
+```{r}
+library(tseries)
+adf.test(ts_deaths)
+```
+
+On teste ensuite la stationnarité avec le test ADF (`adf.test`). Le concept de stationnarité est central : une série est stationnaire si sa moyenne et sa variance sont constantes dans le temps et si sa structure de dépendance ne dépend que du décalage, pas du moment. Le test ADF teste l’hypothèse nulle de racine unitaire (non-stationnarité). La statistique est négative et la p-value est inférieure à 0,01. On rejette donc l’hypothèse de non-stationnarité. Statistiquement, la série peut être considérée comme stationnaire au sens faible, même si visuellement elle présente des variations de niveau. Cela signifie qu’on peut modéliser sans différenciation (d = 0).
+
+```{r}
+pacf(ts_deaths, lag.max = 36)
+```
+
+On observe ensuite la fonction d’autocorrélation partielle (`pacf`). La PACF mesure la corrélation entre $Y_t$ et $Y_{t−k}$ en contrôlant les effets intermédiaires. Pour un processus $AR(p)$, la PACF s’annule après le lag p. Ici, les premiers lags sont significatifs, ce qui suggère une structure autorégressive d’ordre faible.
+
+```{r}
+arima(ts_deaths, order = c(1,0,0))
+arima(ts_deaths, order = c(2,0,0))
+arima(ts_deaths, order = c(3,0,0))
+```
+
+On estime alors successivement trois modèles $AR(p)$ : $AR(1)$, $AR(2)$ et $AR(3)$. Un modèle $AR(p)$ s’écrit mathématiquement : $Y_t = c + φ₁Y_{t−1} + … + φ_pY_{t−p} + ε_t$ où $ε_t$ est un bruit blanc, c’est-à-dire une suite de variables indépendantes de moyenne nulle et variance constante.
+
+Dans l’$AR(1)$, le coefficient $φ₁$ est estimé à 0,63. Cela signifie qu’en moyenne, 63 % du niveau du mois précédent se transmet au mois courant. Le processus est persistant mais stationnaire $|φ₁| < 1$. L’intercept correspond au niveau moyen ajusté.
+
+On compare les modèles avec le critère AIC. L’AIC pénalise la complexité tout en récompensant la qualité d’ajustement. Plus l’AIC est faible, meilleur est le compromis. L’AIC diminue en passant de $AR(1)$ à $AR(2)$ puis à $AR(3)$. $AR(3)$ est donc préférable parmi ces trois modèles.
+
+```{r}
+res_ar3 <- residuals(arima(ts_deaths, order = c(3,0,0)))
+
+acf(res_ar3, lag.max = 36)
+
+Box.test(res_ar3, lag = 20, type = "Ljung")
+```
+
+Cependant, un modèle n’est valide que si ses résidus sont du bruit blanc. On extrait donc les résidus du $AR(3)$ et on examine leur ACF. On effectue ensuite le test de Ljung-Box. Ce test vérifie l’hypothèse nulle selon laquelle les autocorrélations des résidus jusqu’à un certain lag sont nulles. La p-value est très faible (8,56e-06). On rejette donc l’hypothèse de bruit blanc. Cela signifie que le modèle $AR(3)$ ne capture pas toute la structure temporelle.

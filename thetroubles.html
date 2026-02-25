@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Troubles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="thetroubles_files/libs/clipboard/clipboard.min.js"></script>
+<script src="thetroubles_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="thetroubles_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="thetroubles_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="thetroubles_files/libs/quarto-html/popper.min.js"></script>
+<script src="thetroubles_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="thetroubles_files/libs/quarto-html/anchor.min.js"></script>
+<link href="thetroubles_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="thetroubles_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="thetroubles_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="thetroubles_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="thetroubles_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Troubles</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-troubles---a-time-series-analysis-1969-2005" class="level1">
+<h1>The Troubles - A Time Series Analysis (1969-2005)</h1>
+<section id="analyse-descriptive" class="level2">
+<h2 class="anchored" data-anchor-id="analyse-descriptive">Analyse descriptive</h2>
+<section id="visualisation-de-la-série" class="level3">
+<h3 class="anchored" data-anchor-id="visualisation-de-la-série">1. Visualisation de la série</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"ni_fatalities.tab"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,
+: EOF within quoted string</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   3696 obs. of  138 variables:
+ $ id            : num  1 2 8 4 10 6 3 9 7 5 ...
+ $ LLIDNo        : int  4 5 6 7 8 9 10 11 12 13 ...
+ $ McKid         : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ name          : chr  "McCloskey, Francis" "Devenny, Samuel" "Roy, Herbert" "Rooney, Patrick" ...
+ $ year          : int  1969 1969 1969 1969 1969 1969 1969 1969 1969 1969 ...
+ $ post76        : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ post75        : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ date          : chr  "1969-07-14" "1969-07-17" "1969-08-15" "1969-08-14" ...
+ $ period3       : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ period2       : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ decade        : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ age           : int  67 42 26 9 27 28 30 20 15 48 ...
+ $ male          : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ religion      : int  1 1 2 1 1 1 1 1 1 1 ...
+ $ STATUS        : logi  NA NA NA NA NA NA ...
+ $ statusg       : num  4 4 5 4 4 4 4 1 3 4 ...
+ $ noncom        : num  1 1 1 1 1 1 1 0 0 1 ...
+ $ noncomcat     : num  1 1 0 1 1 1 1 0 0 1 ...
+ $ noncomprot    : num  0 0 1 0 0 0 0 NA NA 0 ...
+ $ noncomtype    : num  10 10 10 10 10 10 10 NA NA 10 ...
+ $ civmain       : num  1 1 1 1 1 1 1 0 0 1 ...
+ $ civcat        : num  1 1 0 1 1 1 1 0 0 1 ...
+ $ civprot       : num  0 0 1 0 0 0 0 0 0 0 ...
+ $ civ3          : num  1 1 2 1 1 1 1 NA NA 1 ...
+ $ civ2          : num  1 1 1 1 1 1 1 0 0 1 ...
+ $ civprot2      : num  0 0 1 0 0 0 0 0 0 0 ...
+ $ noncom2       : num  1 1 1 1 1 1 1 0 0 1 ...
+ $ noncomprot2   : num  0 0 1 0 0 0 0 0 0 0 ...
+ $ AGENCY        : logi  NA NA NA NA NA NA ...
+ $ agency        : num  2 2 16 2 2 2 2 2 17 16 ...
+ $ agencyg       : num  1 1 3 1 1 1 1 1 2 3 ...
+ $ nkill         : num  54 54 35 54 54 54 54 54 31 35 ...
+ $ nkillnonc     : num  31 31 NA 31 31 31 31 31 NA NA ...
+ $ baseter1      : num  22 22 NA 22 22 22 22 22 NA NA ...
+ $ baseter2      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ baseter3      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ baseter4      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ baseter5      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ dominance     : num  513 1.89 NA 0.77 1.9 ...
+ $ dominance2a   : num  6.24 0.637 NA -0.261 0.64 ...
+ $ dominance1    : num  22.4 16.8 NA 15.9 16.8 ...
+ $ agage05       : num  83 83 NA 83 83 83 83 83 NA NA ...
+ $ yoper98       : num  29 29 NA 29 29 29 29 29 NA NA ...
+ $ yoper05       : num  36 36 NA 36 36 36 36 36 NA NA ...
+ $ agsize        : num  8500 8500 NA 8500 8500 8500 8500 8500 NA NA ...
+ $ agsizeln      : num  9.05 9.05 NA 9.05 9.05 ...
+ $ agexp         : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ supstate      : num  1 1 NA 1 1 1 1 1 NA NA ...
+ $ supuk         : num  1 1 NA 1 1 1 1 1 NA NA ...
+ $ supnonuk      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ supdias       : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ supext        : num  2 2 NA 2 2 2 2 2 NA NA ...
+ $ supn          : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ supndem       : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ drugs         : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ rob           : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ rackeet       : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ orgcrime      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ counterfeit   : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ crime         : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ ethnichg      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ cohorg        : num  1 1 NA 1 1 1 1 1 NA NA ...
+ $ discipline    : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ civlegtarget  : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ unionism      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ unionism2     : num  1 1 NA 1 1 1 1 1 NA NA ...
+ $ farleft       : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ uloyalism     : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ uselfdet      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ anticath      : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ protfundam    : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ irepub        : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ irepub2       : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ irnat         : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ marlen        : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ irepubsoc     : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ trotskyism    : num  0 0 NA 0 0 0 0 0 NA NA ...
+ $ opposedgfa    : num  -3 -3 NA -3 -3 -3 -3 -3 NA NA ...
+ $ CONSTITUENCY  : logi  NA NA NA NA NA NA ...
+ $ location      : num  6 8 4 4 2 2 11 4 4 2 ...
+ $ borderward    : logi  NA NA NA NA NA NA ...
+ $ wardname      : logi  NA NA NA NA NA NA ...
+ $ locationper   : num  1 0 0 0 1 1 1 0 0 1 ...
+ $ home1         : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ home1a        : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ home1aa       : num  1 1 0 1 1 1 1 1 0 0 ...
+ $ home2         : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ home2a        : num  0 0 0 0 1 1 0 0 0 0 ...
+ $ home3         : num  0 0 1 0 0 0 0 0 0 0 ...
+ $ cath          : num  0 1 0 0 0 0 0 0 0 0 ...
+ $ prot          : num  0 0 0 0 1 1 0 0 0 1 ...
+ $ pop71         : num  109123 41680 96719 96719 105659 ...
+ $ cath71        : num  45.4 64.3 44.5 44.5 21.6 21.6 56.4 44.5 44.5 21.6 ...
+ $ prot71        : num  54.6 35.7 55.5 55.5 78.4 78.4 43.6 55.5 55.5 78.4 ...
+ $ pop81         : num  117602 44380 94894 94894 75117 ...
+ $ cath81        : num  47.8 68.5 45.6 45.6 26.1 26.1 58.5 45.6 45.6 26.1 ...
+ $ prot81        : num  52.2 31.5 54.4 54.4 73.9 73.9 41.5 54.4 54.4 73.9 ...
+ $ parity71      : num  0.832 0.199 0.802 0.802 0.276 ...
+ $ voteuni69     : num  75 50 45 45 87.5 87.5 75 45 45 87.5 ...
+  [list output truncated]</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       id             LLIDNo         McKid            name          
+ Min.   :   1.0   Min.   :   4   Min.   :   1.0   Length:3696       
+ 1st Qu.: 925.8   1st Qu.: 917   1st Qu.: 910.8   Class :character  
+ Median :1850.5   Median :1830   Median :1817.5   Mode  :character  
+ Mean   :1851.1   Mean   :1842   Mean   :1817.2                     
+ 3rd Qu.:2776.2   3rd Qu.:2762   3rd Qu.:2723.2                     
+ Max.   :3703.0   Max.   :3708   Max.   :3638.0                     
+                  NA's   :153    NA's   :64                         
+      year          post76           post75           date          
+ Min.   :1969   Min.   :0.0000   Min.   :0.0000   Length:3696       
+ 1st Qu.:1973   1st Qu.:0.0000   1st Qu.:0.0000   Class :character  
+ Median :1976   Median :0.0000   Median :1.0000   Mode  :character  
+ Mean   :1980   Mean   :0.4896   Mean   :0.5648                     
+ 3rd Qu.:1986   3rd Qu.:1.0000   3rd Qu.:1.0000                     
+ Max.   :2005   Max.   :1.0000   Max.   :1.0000                     
+ NA's   :1      NA's   :1        NA's   :1                          
+    period3         period2          decade           age       
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   : 0.00  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:22.00  
+ Median :3.000   Median :3.000   Median :1.000   Median :29.00  
+ Mean   :3.036   Mean   :3.039   Mean   :1.535   Mean   :32.58  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:2.000   3rd Qu.:41.00  
+ Max.   :6.000   Max.   :6.000   Max.   :3.000   Max.   :91.00  
+ NA's   :1       NA's   :167     NA's   :78      NA's   :36     
+      male           religion      STATUS           statusg     
+ Min.   :0.0000   Min.   :1.000   Mode:logical   Min.   :1.000  
+ 1st Qu.:1.0000   1st Qu.:1.000   NA's:3696      1st Qu.:1.000  
+ Median :1.0000   Median :2.000                  Median :4.000  
+ Mean   :0.9107   Mean   :1.767                  Mean   :3.219  
+ 3rd Qu.:1.0000   3rd Qu.:2.000                  3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :3.000                  Max.   :6.000  
+ NA's   :1        NA's   :1                      NA's   :1      
+     noncom         noncomcat        noncomprot       noncomtype   
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   : 1.00  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:10.00  
+ Median :1.0000   Median :0.0000   Median :0.0000   Median :10.00  
+ Mean   :0.5594   Mean   :0.3215   Mean   :0.3324   Mean   : 9.12  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:10.00  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :10.00  
+ NA's   :1        NA's   :1        NA's   :1629     NA's   :1629   
+    civmain           civcat          civprot            civ3      
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:1.000  
+ Median :1.0000   Median :0.0000   Median :0.0000   Median :1.000  
+ Mean   :0.5191   Mean   :0.3055   Mean   :0.1667   Mean   :1.502  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:2.000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :3.000  
+ NA's   :1        NA's   :1        NA's   :1        NA's   :1778   
+      civ2           civprot2         noncom2        noncomprot2    
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :1.0000   Median :0.0000   Median :1.0000   Median :0.0000  
+ Mean   :0.6568   Mean   :0.3045   Mean   :0.6972   Mean   :0.3434  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :1        NA's   :1        NA's   :1        NA's   :1       
+  AGENCY            agency          agencyg          nkill       
+ Mode:logical   Min.   : 0.000   Min.   :1.000   Min.   :   1.0  
+ NA's:3696      1st Qu.: 4.000   1st Qu.:2.000   1st Qu.: 311.0  
+                Median : 4.000   Median :3.000   Median : 534.0  
+                Mean   : 6.195   Mean   :2.562   Mean   : 991.1  
+                3rd Qu.: 9.000   3rd Qu.:3.000   3rd Qu.:1735.0  
+                Max.   :21.000   Max.   :4.000   Max.   :1735.0  
+                NA's   :30       NA's   :30      NA's   :30      
+   nkillnonc        baseter1         baseter2         baseter3     
+ Min.   :  0.0   Min.   : 1.000   Min.   : 0.000   Min.   : 0.000  
+ 1st Qu.:389.0   1st Qu.: 4.000   1st Qu.: 2.000   1st Qu.: 5.000  
+ Median :708.0   Median : 4.000   Median : 2.000   Median : 8.000  
+ Mean   :508.2   Mean   : 5.944   Mean   : 2.618   Mean   : 7.457  
+ 3rd Qu.:708.0   3rd Qu.: 4.000   3rd Qu.: 4.000   3rd Qu.: 8.000  
+ Max.   :708.0   Max.   :22.000   Max.   :14.000   Max.   :17.000  
+ NA's   :333     NA's   :330      NA's   :330      NA's   :330     
+    baseter4         baseter5        dominance         dominance2a     
+ Min.   : 0.000   Min.   : 0.000   Min.   :   0.000   Min.   :-16.118  
+ 1st Qu.: 0.000   1st Qu.: 0.000   1st Qu.:   0.000   1st Qu.:-16.118  
+ Median :18.000   Median :11.000   Median :   0.069   Median : -2.674  
+ Mean   : 9.276   Mean   : 5.668   Mean   :   4.633   Mean   : -8.627  
+ 3rd Qu.:18.000   3rd Qu.:11.000   3rd Qu.:   0.084   3rd Qu.: -2.477  
+ Max.   :18.000   Max.   :11.000   Max.   :1800.000   Max.   :  7.495  
+ NA's   :333      NA's   :333      NA's   :340        NA's   :340      
+   dominance1        agage05          yoper98         yoper05     
+ Min.   : 0.000   Min.   :  0.00   Min.   : 1.00   Min.   : 1.00  
+ 1st Qu.: 0.000   1st Qu.: 36.00   1st Qu.:29.00   1st Qu.:36.00  
+ Median :13.444   Median : 36.00   Median :29.00   Median :36.00  
+ Mean   : 7.491   Mean   : 64.07   Mean   :27.88   Mean   :34.74  
+ 3rd Qu.:13.641   3rd Qu.: 39.00   3rd Qu.:29.00   3rd Qu.:36.00  
+ Max.   :23.614   Max.   :345.00   Max.   :32.00   Max.   :39.00  
+ NA's   :340      NA's   :330      NA's   :333     NA's   :333    
+     agsize         agsizeln         agexp           supstate     
+ Min.   :    7   Min.   :1.946   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:  900   1st Qu.:6.802   1st Qu.:1.0000   1st Qu.:0.0000  
+ Median :  900   Median :6.802   Median :1.0000   Median :0.0000  
+ Mean   : 2206   Mean   :6.762   Mean   :0.9617   Mean   :0.4085  
+ 3rd Qu.:  900   3rd Qu.:6.802   3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :15000   Max.   :9.616   Max.   :1.0000   Max.   :1.0000  
+ NA's   :333     NA's   :333     NA's   :330      NA's   :330     
+     supuk           supnonuk         supdias           supext     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.000  
+ 1st Qu.:0.0000   1st Qu.:1.0000   1st Qu.:0.0000   1st Qu.:2.000  
+ Median :0.0000   Median :1.0000   Median :1.0000   Median :2.000  
+ Mean   :0.3993   Mean   :0.8188   Mean   :0.6732   Mean   :2.292  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:3.000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :4.000  
+ NA's   :330      NA's   :330      NA's   :330      NA's   :330    
+      supn           supndem           drugs             rob        
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:1.0000  
+ Median :1.0000   Median :0.2500   Median :0.0000   Median :1.0000  
+ Mean   :0.6732   Mean   :0.1296   Mean   :0.3479   Mean   :0.8809  
+ 3rd Qu.:1.0000   3rd Qu.:0.2500   3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :330      NA's   :330      NA's   :330      NA's   :330     
+    rackeet          orgcrime       counterfeit         crime     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.00  
+ 1st Qu.:1.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:3.00  
+ Median :1.0000   Median :0.0000   Median :1.0000   Median :3.00  
+ Mean   :0.8616   Mean   :0.3506   Mean   :0.6595   Mean   :2.75  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:3.00  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :4.00  
+ NA's   :330      NA's   :330      NA's   :330      NA's   :330   
+    ethnichg          cohorg         discipline      civlegtarget   
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:1.0000   1st Qu.:1.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :1.0000   Median :1.0000   Median :1.0000   Median :0.0000  
+ Mean   :0.7591   Mean   :0.8012   Mean   :0.6105   Mean   :0.0086  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :330      NA's   :330      NA's   :330      NA's   :330     
+    unionism        unionism2        farleft          uloyalism     
+ Min.   :0.0000   Min.   :0.000   Min.   :0.00000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.00000   1st Qu.:0.0000  
+ Median :0.0000   Median :0.000   Median :0.00000   Median :0.0000  
+ Mean   :0.3024   Mean   :0.416   Mean   :0.04992   Mean   :0.3024  
+ 3rd Qu.:1.0000   3rd Qu.:1.000   3rd Qu.:0.00000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.000   Max.   :1.00000   Max.   :1.0000  
+ NA's   :330      NA's   :316     NA's   :30        NA's   :330     
+    uselfdet         anticath        protfundam        irepub      
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.0000  
+ Median :0.0000   Median :0.0000   Median :0.000   Median :1.0000  
+ Mean   :0.0056   Mean   :0.2932   Mean   :0.003   Mean   :0.5859  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:0.000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.000   Max.   :1.0000  
+ NA's   :330      NA's   :330      NA's   :330     NA's   :330     
+    irepub2           irnat            marlen         irepubsoc     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :1.0000   Median :1.0000   Median :0.0000   Median :0.0000  
+ Mean   :0.5859   Mean   :0.5603   Mean   :0.0535   Mean   :0.0618  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :330      NA's   :330      NA's   :330      NA's   :330     
+   trotskyism      opposedgfa      CONSTITUENCY      location     
+ Min.   :0e+00   Min.   :-3.0000   Mode:logical   Min.   : 1.000  
+ 1st Qu.:0e+00   1st Qu.: 0.0000   NA's:3696      1st Qu.: 3.000  
+ Median :0e+00   Median : 0.0000                  Median : 7.000  
+ Mean   :9e-04   Mean   :-0.3577                  Mean   : 8.002  
+ 3rd Qu.:0e+00   3rd Qu.: 0.0000                  3rd Qu.:11.000  
+ Max.   :1e+00   Max.   : 1.0000                  Max.   :21.000  
+ NA's   :330     NA's   :330                      NA's   :62      
+ borderward     wardname        locationper         home1       
+ Mode:logical   Mode:logical   Min.   :0.0000   Min.   :0.0000  
+ NA's:3696      NA's:3696      1st Qu.:0.0000   1st Qu.:0.0000  
+                               Median :0.0000   Median :0.0000  
+                               Mean   :0.3809   Mean   :0.4196  
+                               3rd Qu.:1.0000   3rd Qu.:1.0000  
+                               Max.   :1.0000   Max.   :1.0000  
+                               NA's   :62       NA's   :219     
+     home1a          home1aa           home2            home2a      
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :0.0000   Median :1.0000   Median :0.0000   Median :0.0000  
+ Mean   :0.4186   Mean   :0.5119   Mean   :0.2336   Mean   :0.2658  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :199      NA's   :199      NA's   :62       NA's   :62      
+     home3             cath             prot            pop71       
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   : 41680  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.: 76950  
+ Median :0.0000   Median :0.0000   Median :0.0000   Median : 93114  
+ Mean   :0.3965   Mean   :0.0746   Mean   :0.4095   Mean   : 85723  
+ 3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.: 96719  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :109123  
+ NA's   :1        NA's   :319      NA's   :319      NA's   :319     
+     cath71          prot71          pop81            cath81         prot81    
+ Min.   :11.70   Min.   :35.70   Min.   : 44380   Min.   : 4.3   Min.   :31.5  
+ 1st Qu.:21.60   1st Qu.:43.60   1st Qu.: 75117   1st Qu.:26.1   1st Qu.:41.5  
+ Median :44.50   Median :55.50   Median : 83392   Median :45.6   Median :54.4  
+ Mean   :40.09   Mean   :59.91   Mean   : 81375   Mean   :41.9   Mean   :58.1  
+ 3rd Qu.:56.40   3rd Qu.:78.40   3rd Qu.: 94894   3rd Qu.:58.5   3rd Qu.:73.9  
+ Max.   :64.30   Max.   :88.30   Max.   :122700   Max.   :68.5   Max.   :95.7  
+ NA's   :319     NA's   :319     NA's   :319      NA's   :319    NA's   :319   
+    parity71        voteuni69       votenat69        lgeuni73    
+ Min.   :0.1325   Min.   : 45.0   Min.   : 0.00   Min.   :33.30  
+ 1st Qu.:0.2755   1st Qu.: 50.0   1st Qu.: 0.00   1st Qu.:40.40  
+ Median :0.5904   Median : 75.0   Median :25.00   Median :52.50  
+ Mean   :0.5284   Mean   : 72.6   Mean   :22.62   Mean   :54.17  
+ 3rd Qu.:0.8018   3rd Qu.: 87.5   3rd Qu.:37.50   3rd Qu.:68.80  
+ Max.   :0.9079   Max.   :100.0   Max.   :75.00   Max.   :80.40  
+ NA's   :319      NA's   :319     NA's   :319     NA's   :319    
+    lgenat73       assemuni73     assemnat73      assemuni82      assemnat82   
+ Min.   : 0.00   Min.   : 0.0   Min.   : 0.00   Min.   :25.00   Min.   : 0.00  
+ 1st Qu.:10.50   1st Qu.:50.0   1st Qu.:16.70   1st Qu.:42.90   1st Qu.:20.00  
+ Median :35.70   Median :57.1   Median :42.90   Median :57.10   Median :42.90  
+ Mean   :27.33   Mean   :50.2   Mean   :37.86   Mean   :50.94   Mean   :33.96  
+ 3rd Qu.:48.20   3rd Qu.:66.7   3rd Qu.:50.00   3rd Qu.:60.00   3rd Qu.:50.00  
+ Max.   :51.90   Max.   :83.3   Max.   :71.40   Max.   :80.00   Max.   :50.00  
+ NA's   :319     NA's   :319    NA's   :319     NA's   :319     NA's   :319    
+   westuni70        westnat70        westuni74       westnat74    
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.000  
+ Median :1.0000   Median :0.0000   Median :1.000   Median :0.000  
+ Mean   :0.6642   Mean   :0.3358   Mean   :0.737   Mean   :0.263  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.000   3rd Qu.:1.000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.000   Max.   :1.000  
+ NA's   :319      NA's   :319      NA's   :319     NA's   :319    
+   westuni79       westnat79       westuni83        westnat83     
+ Min.   :0.000   Min.   :0.000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :1.000   Median :0.000   Median :1.0000   Median :0.0000  
+ Mean   :0.737   Mean   :0.263   Mean   :0.7305   Mean   :0.2695  
+ 3rd Qu.:1.000   3rd Qu.:1.000   3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.000   Max.   :1.000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :319     NA's   :319     NA's   :319      NA's   :319     
+    westsf83        westuni87        westnat87         westsf87     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :0.0000   Median :1.0000   Median :0.0000   Median :0.0000  
+ Mean   :0.1948   Mean   :0.5754   Mean   :0.4246   Mean   :0.1948  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+ NA's   :319      NA's   :319      NA's   :319      NA's   :319     
+   westuni92        westnat92         westsf92     westuni97     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0     Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0     1st Qu.:0.0000  
+ Median :1.0000   Median :0.0000   Median :0     Median :1.0000  
+ Mean   :0.5754   Mean   :0.4246   Mean   :0     Mean   :0.5443  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0     3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :0     Max.   :1.0000  
+ NA's   :319      NA's   :319      NA's   :319   NA's   :319     
+   westnat97         westsf97         barecom         babarracks   
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:1.000  
+ Median :0.0000   Median :0.0000   Median :0.0000   Median :1.000  
+ Mean   :0.4557   Mean   :0.2259   Mean   :0.2262   Mean   :1.109  
+ 3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:2.000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :2.000  
+ NA's   :319      NA's   :319      NA's   :319      NA's   :319    
+    bacamps        rirbarracks         barir          rucbars     
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.000   Min.   : 0.00  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:2.000   1st Qu.: 9.00  
+ Median :0.0000   Median :1.0000   Median :2.000   Median :10.00  
+ Mean   :0.1229   Mean   :0.6704   Mean   :1.902   Mean   :10.96  
+ 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:2.000   3rd Qu.:16.00  
+ Max.   :1.0000   Max.   :2.0000   Max.   :3.000   Max.   :20.00  
+ NA's   :319      NA's   :319      NA's   :319     NA's   :319    
+ rucbarsper1000   CIRCUMSTANCES    causality       rationale    
+ Min.   :0.0000   Mode:logical   Min.   :1.000   Min.   :0.000  
+ 1st Qu.:0.0930   NA's:3696      1st Qu.:3.000   1st Qu.:6.000  
+ Median :0.1320                  Median :3.000   Median :7.000  
+ Mean   :0.1286                  Mean   :2.825   Mean   :6.068  
+ 3rd Qu.:0.1510                  3rd Qu.:3.000   3rd Qu.:8.000  
+ Max.   :0.2150                  Max.   :3.000   Max.   :8.000  
+ NA's   :319                     NA's   :75      NA's   :64     
+   sectarian      indiscriminate     context          mistaken      
+ Min.   :0.0000   Min.   :0.000   Min.   : 0.000   Min.   :0.00000  
+ 1st Qu.:0.0000   1st Qu.:0.000   1st Qu.: 3.000   1st Qu.:0.00000  
+ Median :0.0000   Median :0.000   Median : 6.000   Median :0.00000  
+ Mean   :0.2704   Mean   :0.156   Mean   : 5.261   Mean   :0.01823  
+ 3rd Qu.:1.0000   3rd Qu.:0.000   3rd Qu.: 7.000   3rd Qu.:0.00000  
+ Max.   :1.0000   Max.   :1.000   Max.   :13.000   Max.   :1.00000  
+ NA's   :64       NA's   :75      NA's   :62       NA's   :75       </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id LLIDNo McKid               name year post76 post75       date period3
+1  1      4     1 McCloskey, Francis 1969      0      0 1969-07-14       1
+2  2      5     2    Devenny, Samuel 1969      0      0 1969-07-17       1
+3  8      6     3       Roy, Herbert 1969      0      0 1969-08-15       1
+4  4      7     4    Rooney, Patrick 1969      0      0 1969-08-14       1
+5 10      8     5   McLarnon, Samuel 1969      0      0 1969-08-15       1
+6  6      9     6     Lynch, Michael 1969      0      0 1969-08-15       1
+  period2 decade age male religion STATUS statusg noncom noncomcat noncomprot
+1       1      1  67    1        1     NA       4      1         1          0
+2       1      1  42    1        1     NA       4      1         1          0
+3       1      1  26    1        2     NA       5      1         0          1
+4       1      1   9    1        1     NA       4      1         1          0
+5       1      1  27    1        1     NA       4      1         1          0
+6       1      1  28    1        1     NA       4      1         1          0
+  noncomtype civmain civcat civprot civ3 civ2 civprot2 noncom2 noncomprot2
+1         10       1      1       0    1    1        0       1           0
+2         10       1      1       0    1    1        0       1           0
+3         10       1      0       1    2    1        1       1           1
+4         10       1      1       0    1    1        0       1           0
+5         10       1      1       0    1    1        0       1           0
+6         10       1      1       0    1    1        0       1           0
+  AGENCY agency agencyg nkill nkillnonc baseter1 baseter2 baseter3 baseter4
+1     NA      2       1    54        31       22        0        0        0
+2     NA      2       1    54        31       22        0        0        0
+3     NA     16       3    35        NA       NA       NA       NA       NA
+4     NA      2       1    54        31       22        0        0        0
+5     NA      2       1    54        31       22        0        0        0
+6     NA      2       1    54        31       22        0        0        0
+  baseter5 dominance dominance2a dominance1 agage05 yoper98 yoper05 agsize
+1        0   513.000   6.2402760   22.35838      83      29      36   8500
+2        0     1.890   0.6365768   16.75468      83      29      36   8500
+3       NA        NA          NA         NA      NA      NA      NA     NA
+4        0     0.770  -0.2613648   15.85674      83      29      36   8500
+5        0     1.896   0.6397464   16.75785      83      29      36   8500
+6        0     1.896   0.6397464   16.75785      83      29      36   8500
+  agsizeln agexp supstate supuk supnonuk supdias supext supn supndem drugs rob
+1 9.047821     0        1     1        0       0      2    0       0     0   0
+2 9.047821     0        1     1        0       0      2    0       0     0   0
+3       NA    NA       NA    NA       NA      NA     NA   NA      NA    NA  NA
+4 9.047821     0        1     1        0       0      2    0       0     0   0
+5 9.047821     0        1     1        0       0      2    0       0     0   0
+6 9.047821     0        1     1        0       0      2    0       0     0   0
+  rackeet orgcrime counterfeit crime ethnichg cohorg discipline civlegtarget
+1       0        0           0     0        0      1          0            0
+2       0        0           0     0        0      1          0            0
+3      NA       NA          NA    NA       NA     NA         NA           NA
+4       0        0           0     0        0      1          0            0
+5       0        0           0     0        0      1          0            0
+6       0        0           0     0        0      1          0            0
+  unionism unionism2 farleft uloyalism uselfdet anticath protfundam irepub
+1        0         1       0         0        0        0          0      0
+2        0         1       0         0        0        0          0      0
+3       NA        NA       0        NA       NA       NA         NA     NA
+4        0         1       0         0        0        0          0      0
+5        0         1       0         0        0        0          0      0
+6        0         1       0         0        0        0          0      0
+  irepub2 irnat marlen irepubsoc trotskyism opposedgfa CONSTITUENCY location
+1       0     0      0         0          0         -3           NA        6
+2       0     0      0         0          0         -3           NA        8
+3      NA    NA     NA        NA         NA         NA           NA        4
+4       0     0      0         0          0         -3           NA        4
+5       0     0      0         0          0         -3           NA        2
+6       0     0      0         0          0         -3           NA        2
+  borderward wardname locationper home1 home1a home1aa home2 home2a home3 cath
+1         NA       NA           1     0      0       1     0      0     0    0
+2         NA       NA           0     0      0       1     0      0     0    1
+3         NA       NA           0     0      0       0     0      0     1    0
+4         NA       NA           0     0      0       1     0      0     0    0
+5         NA       NA           1     0      0       1     0      1     0    0
+6         NA       NA           1     0      0       1     0      1     0    0
+  prot  pop71 cath71 prot71  pop81 cath81 prot81  parity71 voteuni69 votenat69
+1    0 109123   45.4   54.6 117602   47.8   52.2 0.8315019      75.0      25.0
+2    0  41680   64.3   35.7  44380   68.5   31.5 0.1988795      50.0      50.0
+3    0  96719   44.5   55.5  94894   45.6   54.4 0.8018018      45.0      37.5
+4    0  96719   44.5   55.5  94894   45.6   54.4 0.8018018      45.0      37.5
+5    1 105659   21.6   78.4  75117   26.1   73.9 0.2755102      87.5       0.0
+6    1 105659   21.6   78.4  75117   26.1   73.9 0.2755102      87.5       0.0
+  lgeuni73 lgenat73 assemuni73 assemnat73 assemuni82 assemnat82 westuni70
+1     54.6     24.7       57.1       42.9       57.1       42.9         1
+2     33.3     51.9       57.1       42.9       57.1       42.9         1
+3     40.4     48.2        0.0       71.4       25.0       50.0         0
+4     40.4     48.2        0.0       71.4       25.0       50.0         0
+5     68.8     10.5       66.7       16.7       60.0       20.0         1
+6     68.8     10.5       66.7       16.7       60.0       20.0         1
+  westnat70 westuni74 westnat74 westuni79 westnat79 westuni83 westnat83
+1         0         1         0         1         0         1         0
+2         0         1         0         1         0         0         1
+3         1         0         1         0         1         0         1
+4         1         0         1         0         1         0         1
+5         0         1         0         1         0         1         0
+6         0         1         0         1         0         1         0
+  westsf83 westuni87 westnat87 westsf87 westuni92 westnat92 westsf92 westuni97
+1        0         1         0        0         1         0        0         1
+2        0         0         1        0         0         1        0         0
+3        1         0         1        1         0         1        0         0
+4        1         0         1        1         0         1        0         0
+5        0         1         0        0         1         0        0         1
+6        0         1         0        0         1         0        0         1
+  westnat97 westsf97 barecom babarracks bacamps rirbarracks barir rucbars
+1         0        0       0          1       1           0     2       9
+2         1        0       1          2       0           0     2       6
+3         1        1       0          2       0           0     2       9
+4         1        1       0          2       0           0     2       9
+5         0        0       0          1       0           1     2      16
+6         0        0       0          1       0           1     2      16
+  rucbarsper1000 CIRCUMSTANCES causality rationale sectarian indiscriminate
+1          0.082            NA         2         5         0              1
+2          0.144            NA         2         5         0              1
+3          0.093            NA         1         1         0              1
+4          0.093            NA         3         5         0              0
+5          0.151            NA         3         5         0              0
+6          0.151            NA         3         5         0              0
+  context mistaken
+1       2        0
+2       2        0
+3       2        0
+4       2        0
+5       2        0
+6       2        0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>date)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>date), ]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3545  138</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(data<span class="sc">$</span>date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1969-07-14" "2005-03-18"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data<span class="sc">$</span>date))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>On commence par importer les données. Le fichier contient 3696 observations et 138 variables.</p>
+<p>La variable essentielle ici est <code>date</code>, qui est initialement lue comme caractère. Une série temporelle repose entièrement sur l’ordre chronologique, donc la première étape conceptuelle consiste à convertir cette variable en objet de type Date (<code>as.Date</code>).</p>
+<p>Après conversion, les observations sans date valide sont supprimées. Cette étape est indispensable : une date manquante empêche l’assignation à une période mensuelle, donc l’observation ne peut pas être intégrée dans la série.</p>
+<p>On vérifie ensuite l’étendue temporelle avec <code>range(data$date)</code>. Les données valides couvrent juillet 1969 à mars 2005. Cela définit naturellement le domaine de la série.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>monthly_raw <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">year  =</span> <span class="fu">year</span>(date),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month) <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Les données initiales sont individuelles (un décès par ligne). On choisit l’échelle mensuelle, à l’échelle journalière la série serait trop bruitée et très irrégulière et à l’échelle annuelle on perdrait trop d’information (36 observations). Le mois est donc un compromis pertinent pour observer la dynamique du conflit.</p>
+<p>On extrait l’année et le mois avec les fonctions <code>year()</code> et <code>month()</code> du package lubridate. Mathématiquement, on définit une fonction d’agrégation qui associe à chaque couple (année, mois) le nombre d’événements observés. Cette agrégation est réalisée via <code>group_by(year, month)</code> puis <code>summarise(total = n())</code>. On obtient ainsi une série brute de comptages mensuels.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>start_month <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(<span class="fu">min</span>(data<span class="sc">$</span>date), <span class="st">"month"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>end_month   <span class="ot">&lt;-</span> <span class="fu">floor_date</span>(<span class="fu">max</span>(data<span class="sc">$</span>date), <span class="st">"month"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>full_months <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">seq</span>(start_month, end_month, <span class="at">by =</span> <span class="st">"month"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>full_months<span class="sc">$</span>year  <span class="ot">&lt;-</span> <span class="fu">year</span>(full_months<span class="sc">$</span>date)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>full_months<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">month</span>(full_months<span class="sc">$</span>date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Certains mois peuvent n’avoir aucun décès. Si on se contente d’agréger les mois présents dans les données, les mois sans observation disparaissent. Cela fausserait la structure temporelle. On construit donc explicitement une séquence complète de mois entre la première et la dernière date avec <code>seq(start_month, end_month, by = "month")</code>. Cette étape garantit la régularité de la grille temporelle.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>monthly_counts <span class="ot">&lt;-</span> full_months <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(monthly_raw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>monthly_counts<span class="sc">$</span>total[<span class="fu">is.na</span>(monthly_counts<span class="sc">$</span>total)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(monthly_counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 429</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(monthly_counts<span class="sc">$</span>total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>On joint ensuite cette grille complète avec les comptages réels (<code>left_join</code>). Les mois sans décès apparaissent alors avec des valeurs manquantes, remplacées par zéro. On obtient 429 mois consécutifs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ts_deaths <span class="ot">&lt;-</span> <span class="fu">ts</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  monthly_counts<span class="sc">$</span>total,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1969</span>, <span class="dv">7</span>),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">frequency =</span> <span class="dv">12</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">start</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1969    7</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">end</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2005    3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frequency</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+<p>On transforme ensuite la série numérique en objet <code>ts</code> avec <code>frequency = 12</code>. Le paramètre <code>start = c(1969, 7)</code> indique que la première observation correspond à juillet 1969. Le paramètre <code>frequency = 12</code> signifie que la série comporte 12 observations par an. Cette information est essentielle pour que les fonctions d’autocorrélation et de modélisation comprennent la structure périodique.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.000   5.000   8.263  11.000  97.000 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.263403</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 116.6851</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ts_deaths,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Nombre mensuel de décès (1969–2005)"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Nombre de décès"</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Temps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="thetroubles_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>On commence par une analyse descriptive simple. La moyenne mensuelle est d’environ 8,26 décès. La variance est de 116,7, nettement supérieure à la moyenne. Cela indique une forte dispersion et la présence probable de périodes de forte intensité. Le graphique confirme visuellement un pic important au début des années 1970, suivi d’une décroissance progressive avec une grande variance. Cela suggère une dynamique non constante dans le temps.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(ts_deaths, <span class="at">lag.max =</span> <span class="dv">36</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="thetroubles_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>On examine ensuite la fonction d’autocorrélation (<code>acf</code>). Mathématiquement, l’autocorrélation au lag k mesure la corrélation entre la série et elle-même décalée de k périodes. Si les barres sont significativement (au dessus de la barre bleue) positives sur plusieurs retards, cela signifie que les valeurs proches dans le temps sont liées. Ici, l’ACF décroît lentement, ce qui indique une forte dépendance temporelle. Les niveaux élevés tendent à être suivis de niveaux élevés. Ce comportement est typique d’un processus autorégressif.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tseries)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tseries' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adf.test</span>(ts_deaths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in adf.test(ts_deaths): p-value smaller than printed p-value</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Augmented Dickey-Fuller Test
+
+data:  ts_deaths
+Dickey-Fuller = -4.2781, Lag order = 7, p-value = 0.01
+alternative hypothesis: stationary</code></pre>
+</div>
+</div>
+<p>On teste ensuite la stationnarité avec le test ADF (<code>adf.test</code>). Le concept de stationnarité est central : une série est stationnaire si sa moyenne et sa variance sont constantes dans le temps et si sa structure de dépendance ne dépend que du décalage, pas du moment. Le test ADF teste l’hypothèse nulle de racine unitaire (non-stationnarité). La statistique est négative et la p-value est inférieure à 0,01. On rejette donc l’hypothèse de non-stationnarité. Statistiquement, la série peut être considérée comme stationnaire au sens faible, même si visuellement elle présente des variations de niveau. Cela signifie qu’on peut modéliser sans différenciation (d = 0).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pacf</span>(ts_deaths, <span class="at">lag.max =</span> <span class="dv">36</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="thetroubles_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>On observe ensuite la fonction d’autocorrélation partielle (<code>pacf</code>). La PACF mesure la corrélation entre <span class="math inline">\(Y_t\)</span> et <span class="math inline">\(Y_{t−k}\)</span> en contrôlant les effets intermédiaires. Pour un processus <span class="math inline">\(AR(p)\)</span>, la PACF s’annule après le lag p.&nbsp;Ici, les premiers lags sont significatifs, ce qui suggère une structure autorégressive d’ordre faible.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arima</span>(ts_deaths, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+arima(x = ts_deaths, order = c(1, 0, 0))
+
+Coefficients:
+         ar1  intercept
+      0.6339     8.2118
+s.e.  0.0372     1.0951
+
+sigma^2 estimated as 69.5:  log likelihood = -1518.76,  aic = 3043.52</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arima</span>(ts_deaths, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+arima(x = ts_deaths, order = c(2, 0, 0))
+
+Coefficients:
+         ar1     ar2  intercept
+      0.3712  0.4134     8.1249
+s.e.  0.0438  0.0438     1.6789
+
+sigma^2 estimated as 57.54:  log likelihood = -1478.43,  aic = 2964.86</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arima</span>(ts_deaths, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+arima(x = ts_deaths, order = c(3, 0, 0))
+
+Coefficients:
+         ar1     ar2     ar3  intercept
+      0.2991  0.3492  0.1731     8.0293
+s.e.  0.0474  0.0466  0.0474     1.9812
+
+sigma^2 estimated as 55.8:  log likelihood = -1471.88,  aic = 2953.77</code></pre>
+</div>
+</div>
+<p>On estime alors successivement trois modèles <span class="math inline">\(AR(p)\)</span> : <span class="math inline">\(AR(1)\)</span>, <span class="math inline">\(AR(2)\)</span> et <span class="math inline">\(AR(3)\)</span>. Un modèle <span class="math inline">\(AR(p)\)</span> s’écrit mathématiquement : <span class="math inline">\(Y_t = c + φ₁Y_{t−1} + … + φ_pY_{t−p} + ε_t\)</span> où <span class="math inline">\(ε_t\)</span> est un bruit blanc, c’est-à-dire une suite de variables indépendantes de moyenne nulle et variance constante.</p>
+<p>Dans l’<span class="math inline">\(AR(1)\)</span>, le coefficient <span class="math inline">\(φ₁\)</span> est estimé à 0,63. Cela signifie qu’en moyenne, 63 % du niveau du mois précédent se transmet au mois courant. Le processus est persistant mais stationnaire <span class="math inline">\(|φ₁| &lt; 1\)</span>. L’intercept correspond au niveau moyen ajusté.</p>
+<p>On compare les modèles avec le critère AIC. L’AIC pénalise la complexité tout en récompensant la qualité d’ajustement. Plus l’AIC est faible, meilleur est le compromis. L’AIC diminue en passant de <span class="math inline">\(AR(1)\)</span> à <span class="math inline">\(AR(2)\)</span> puis à <span class="math inline">\(AR(3)\)</span>. <span class="math inline">\(AR(3)\)</span> est donc préférable parmi ces trois modèles.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>res_ar3 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(<span class="fu">arima</span>(ts_deaths, <span class="at">order =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>)))</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(res_ar3, <span class="at">lag.max =</span> <span class="dv">36</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="thetroubles_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Box.test</span>(res_ar3, <span class="at">lag =</span> <span class="dv">20</span>, <span class="at">type =</span> <span class="st">"Ljung"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Box-Ljung test
+
+data:  res_ar3
+X-squared = 59.482, df = 20, p-value = 8.562e-06</code></pre>
+</div>
+</div>
+<p>Cependant, un modèle n’est valide que si ses résidus sont du bruit blanc. On extrait donc les résidus du <span class="math inline">\(AR(3)\)</span> et on examine leur ACF. On effectue ensuite le test de Ljung-Box. Ce test vérifie l’hypothèse nulle selon laquelle les autocorrélations des résidus jusqu’à un certain lag sont nulles. La p-value est très faible (8,56e-06). On rejette donc l’hypothèse de bruit blanc. Cela signifie que le modèle <span class="math inline">\(AR(3)\)</span> ne capture pas toute la structure temporelle.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
